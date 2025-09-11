@@ -1,0 +1,33 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: source .env/bin/activate && python3 train.py
+    deps:
+    - path: data/train
+      hash: md5
+      md5: d7daf4cfccf6a60db2b44a8b7b7c0ab6.dir
+      size: 15639245
+      nfiles: 133
+    - path: params.yaml
+      hash: md5
+      md5: 151fd10638db68217240532f6bb82929
+      size: 60
+    - path: train.py
+      hash: md5
+      md5: d1b3366f91636752555ee447cf28d04c
+      size: 2069
+    params:
+      params.yaml:
+        batch_size: 16
+        epochs: 5
+        img_size: 128
+        learning_rate: 0.001
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: d9cc94c2348d1755f0997d363a09db24
+      size: 59
+    - path: model.pth
+      hash: md5
+      md5: 081f6330262683a894783c784fff247d
+      size: 44780939
