@@ -1,0 +1,22 @@
+# Add patterns of files dvc should ignore, which could improve
+# the performance. Learn more at
+# https://dvc.org/doc/user-guide/dvcignore
+# Ignore raw junk files inside dataset
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
+
+# Ignore unnecessary backups
+*.bak
+*.swp
+
+# Ignore env folders (if accidentally inside data/)
+env/
+# Ignore .DS_Store files in all directories
+**/.DS_Store
+**/.DS_Store/*
+
+data/train/.DS_Store
+.DS_Store/
+data/**/.DS_Store
