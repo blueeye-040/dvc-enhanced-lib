@@ -28,8 +28,11 @@ class CmdTag(CmdBase):
                 tags = entry.get("tags")
                 if tags is None or not isinstance(tags, list):
                     tags = []
-                if name not in tags:
-                    tags.append(name)
+                if name in tags:
+                    print(f"Tag '{name}' already exists for commit {commit}.")
+                    return 0
+                # Replace existing tag instead of adding multiple tags for same commit
+                tags = [name]  # Replace all existing tags with the new one
                 entry["tags"] = tags
                 found = True
         if found:
@@ -46,8 +49,10 @@ class CmdTag(CmdBase):
                 tags = entry.get("tags")
                 if tags is None or not isinstance(tags, list):
                     tags = []
-                if name not in tags:
-                    tags.append(name)
+                if name in tags:
+                    print(f"Tag '{name}' already exists for commit {commit}.")
+                    return 0
+                tags=[name]
                 entry["tags"] = tags
                 found2 = True
         if found2:
