@@ -19,10 +19,12 @@ from dvc.commands import (
     data,
     data_sync,
     dataset,
+    dataset_list,
     destroy,
     diff,
     du,
     experiments,
+    exp_list,
     freeze,
     gc,
     get,
@@ -37,6 +39,7 @@ from dvc.commands import (
     ls,
     ls_url,
     metrics,
+    metrics_diff,
     move,
     params,
     plots,
@@ -47,6 +50,7 @@ from dvc.commands import (
     root,
     stage,
     studio,
+    tag,
     unprotect,
     update,
     version,
@@ -71,10 +75,12 @@ COMMANDS = [
     data,
     data_sync,
     dataset,
+    dataset_list,
     destroy,
     diff,
     du,
     experiments,
+    exp_list,
     freeze,
     gc,
     get,
@@ -89,6 +95,7 @@ COMMANDS = [
     ls,
     ls_url,
     metrics,
+    metrics_diff,
     move,
     params,
     plots,
@@ -99,6 +106,7 @@ COMMANDS = [
     root,
     stage,
     studio,
+    tag,
     unprotect,
     update,
     version,
@@ -218,15 +226,6 @@ def get_main_parser():
         help="Use `dvc command --help` for command-specific help.",
         required=True,
     )
-    parents_parser = argparse.ArgumentParser(add_help=False)
-    logs.add_parser(subparsers, parents_parser)
-
-    # Register extra MLOps commands
-    from dvc.commands import exp_list, tag, metrics_diff, dataset_list
-    exp_list.add_parser(subparsers, parent_parser)
-    tag.add_parser(subparsers, parent_parser)
-    metrics_diff.add_parser(subparsers, parent_parser)
-    dataset_list.add_parser(subparsers, parent_parser)
 
     for cmd in COMMANDS:
         cmd.add_parser(subparsers, parent_parser)

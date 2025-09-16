@@ -4,8 +4,7 @@ from dvc.exceptions import InvalidArgumentError, UploadError
 from dvc.log import logger
 from dvc.stage.cache import RunCacheNotSupported
 from dvc.ui import ui
-from dvc.repo.logs import add_push_entry   # newly added
-
+from dvc.repo.logs import add_push_entry
 from . import locked
 
 logger = logger.getChild(__name__)
@@ -85,7 +84,6 @@ def push(  # noqa: PLR0913
     from dvc_data.index.push import push as ipush
 
     from .fetch import _collect_indexes
-
 
     failed_count = 0
     transferred_count = 0
@@ -174,15 +172,9 @@ def push(  # noqa: PLR0913
 
     transferred_count += push_transferred
     failed_count += push_failed
-    # used = self.get_used_objs(
-    #     targets=targets,
-    #     remote=remote,
-    #     run_cache=run_cache
-    # )
     if failed_count:
         raise UploadError(failed_count)
-
-        
+    
     # -----  new hook -------#
 
     try:
@@ -191,6 +183,8 @@ def push(  # noqa: PLR0913
             outs=ws_idx.outs
             add_push_entry(self,outs)
     except Exception as e:
-        logging.warning(f"Failed to record push logs: {e}")
+        logger.warning(f"Failed to record push logs: {e}")
+
+    return transferred_count
 
     return transferred_count

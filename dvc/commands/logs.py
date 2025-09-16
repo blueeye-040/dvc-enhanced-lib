@@ -1,4 +1,5 @@
 # dvc/cli/logs.py
+
 import argparse
 from dvc.repo.logs import show_logs
 
@@ -35,8 +36,9 @@ def add_parser(subparsers, parent_parser):
         "--internal", action="store_true", help="Show only internal (repo) push history instead of global history"
     )
     parser.add_argument(
-        "--tag", type=str, default=None, help="Filter logs by tag name"
+        "--tag", nargs='+', type=str, default=None, help="Filter logs by one or more tag names (space separated)"
     )
+
     parser.set_defaults(func=CmdLogs)
     return parser
 
@@ -45,11 +47,14 @@ from dvc.cli.command import CmdBase
 
 class CmdLogs(CmdBase):
     def run(self):
+
         number = getattr(self.args, "number", 0)
         dataset = getattr(self.args, "dataset", None)
         show_all = getattr(self.args, "show_all", False)
         use_internal = getattr(self.args, "internal", False)
-        tag = getattr(self.args, "tag", None)
+
+        tag_list = getattr(self.args, "tag", None)
+
 
         # By default, show global (external) history; if --internal, show internal (repo) history
         history = show_logs(global_history=not use_internal)
@@ -57,15 +62,21 @@ class CmdLogs(CmdBase):
             print("No DVC push history found.")
             return 0
 
-        # Filter by tag if requested
-        if tag:
-            def has_tag(entry):
+        # If --tag is used, print only commit hash and tag name for each match, then exit
+        if tag_list:
+
+            found = False
+            for entry in history:
                 tags = entry.get("tags", [])
-                return tag in tags
-            history = [h for h in history if has_tag(h)]
-            if not history:
-                print(f"No DVC push history found for tag '{tag}'.")
-                return 0
+                if not isinstance(tags, list):
+                    continue
+                for t in tag_list:
+                    if t in tags:
+                        print(f"{entry.get('commit','')} {t}")
+                        found = True
+            if not found:
+                print(f"No DVC push history found for tag(s): {' '.join(tag_list)}.")
+            return 0
 
         # Filter by dataset if requested
         if dataset:
