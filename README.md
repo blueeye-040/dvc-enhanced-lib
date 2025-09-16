@@ -135,11 +135,10 @@ dvc logs --tag v1.0 v2.0
 
 ## Dependencies
 - `rich`: For table display (optional, falls back to plain text)
-- `pandas`: Required for `--export` functionality
 
 Install with:
 ```sh
-pip install pandas rich
+pip install rich
 ```
 
 ---
