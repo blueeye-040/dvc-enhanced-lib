@@ -1,6 +1,6 @@
 # DVC MLOps Enhanced Commands Documentation
 
-This project extends DVC with powerful MLOps commands for experiment tracking, dataset management, metrics comparison, and tagging, making DVC more like Git for ML workflows.
+This project extends DVC with wrapper functions for experiment tracking, dataset management, metrics comparison, and tagging, making DVC more like Git for ML workflows.
 
 ---
 

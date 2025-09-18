@@ -2,7 +2,8 @@
 LICENSE
 README.md
 pyproject.toml
-dvc/.DS_Store
+requirements.txt
+script.py
 dvc/__init__.py
 dvc/__main__.py
 dvc/_debug.py
@@ -57,7 +58,6 @@ dvc/cli/completion.py
 dvc/cli/formatter.py
 dvc/cli/parser.py
 dvc/cli/utils.py
-dvc/commands/.DS_Store
 dvc/commands/__init__.py
 dvc/commands/add.py
 dvc/commands/artifacts.py
@@ -150,7 +150,6 @@ dvc/render/match.py
 dvc/render/converter/__init__.py
 dvc/render/converter/image.py
 dvc/render/converter/vega.py
-dvc/repo/.DS_Store
 dvc/repo/__init__.py
 dvc/repo/add.py
 dvc/repo/artifacts.py
@@ -310,9 +309,9 @@ dvc/utils/serialize/_json.py
 dvc/utils/serialize/_py.py
 dvc/utils/serialize/_toml.py
 dvc/utils/serialize/_yaml.py
-dvc_mlplus.egg-info/PKG-INFO
-dvc_mlplus.egg-info/SOURCES.txt
-dvc_mlplus.egg-info/dependency_links.txt
-dvc_mlplus.egg-info/entry_points.txt
-dvc_mlplus.egg-info/requires.txt
-dvc_mlplus.egg-info/top_level.txt
+dvc_custom_wrapper.egg-info/PKG-INFO
+dvc_custom_wrapper.egg-info/SOURCES.txt
+dvc_custom_wrapper.egg-info/dependency_links.txt
+dvc_custom_wrapper.egg-info/entry_points.txt
+dvc_custom_wrapper.egg-info/requires.txt
+dvc_custom_wrapper.egg-info/top_level.txt

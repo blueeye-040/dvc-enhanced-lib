@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
-Name: dvc-mlplus
-Version: 0.1.2
+Name: dvc-custom-wrapper
+Version: 0.1.0
 Summary: Enhanced DVC with advanced MLOps commands and features.
 Author-email: blueeye-040 <chandrumurugesan6@gmail.com>
 License:                                  Apache License
@@ -135,7 +135,7 @@ Dynamic: license-file
 
 # DVC MLOps Enhanced Commands Documentation
 
-This project extends DVC with powerful MLOps commands for experiment tracking, dataset management, metrics comparison, and tagging, making DVC more like Git for ML workflows.
+This project extends DVC with wrapper functions for experiment tracking, dataset management, metrics comparison, and tagging, making DVC more like Git for ML workflows.
 
 ---
 

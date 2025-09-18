@@ -3,8 +3,8 @@ requires = ["setuptools>=77", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dvc-mlplus"
-version = "0.1.2"
+name = "dvc-custom-wrapper"
+version = "0.1.0"
 description = "Enhanced DVC with advanced MLOps commands and features."
 authors = [
     { name="blueeye-040", email="chandrumurugesan6@gmail.com" }
